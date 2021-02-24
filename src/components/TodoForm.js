@@ -8,19 +8,25 @@ function TodoForm() {
   completed: false  
 });
 
-function handletaskInputChange(event) {  //updates task property on todo object
+function handletaskInputChange(event) {   //updates task property on todo object
+   // e.target.value contains new input from onChange
+    // event for input elements
   setTodo({...todo, task: event.targer.value})
 }
 
 function handleSubmit(event) {
-  event.preventDefault();
+  event.preventDefault(); // prevents browser refresh
+     // trim() gets rid of string whitespace
   if (todo.task.trim()) {
-    addTodo({ ...todo, id: uuid.v4() })
+    addTodo({ ...todo, id: uuid.v4() });
+    //reset task input
+    setTodo({ ...todo, task: ''});
+
   }
 }
 
    return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
       name='task'
       type='text'
