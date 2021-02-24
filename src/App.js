@@ -48,14 +48,14 @@ function removeTodo(id) {
 
   return (
     <div className="App">
-   
-        <p>React ToDo</p>
-        <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} 
-          toggleComplete={toggleComplete}
-          removeTodo={removeTodo}
-       />
-
+      <Typography style={{ padding: 16 }} variant="h1">
+        React ToDo
+      </Typography>
+      <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} 
+        toggleComplete={toggleComplete}
+        removeTodo={removeTodo}
+      />
     </div>
   );
 }
