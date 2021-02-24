@@ -15,6 +15,15 @@ function App() {
  }
 
  useEffect(() => {
+  // fires when app component mounts to the DOM
+  const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  if (storageTodos) {
+    setTodos(storageTodos);
+  }
+}, []);
+
+
+ useEffect(() => {
   // fires when todos array gets updated
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
 }, [todos]);
