@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import uuid from 'uuid';
+import React, { useState } from "react";
+import uuid from "uuid";
 
-function TodoForm() {
+function TodoForm(addTodo) {
   const [todo, setTodo] = useState({
   id: "",
   task: "",   
