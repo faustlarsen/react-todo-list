@@ -1,10 +1,14 @@
 import React from "react";
 
-function Todo({ todo }) {
+function Todo({ todo, toggleComplete }) {
+  function handleCheckboxClick() {
+    toggleComplete(todo.id);
+  }
+
   return (
     <div style={{ display: "flex"}}> 
     {/* //alligh elements next to each other horizontally */}
-    <input type='checkbox' />
+    <input type='checkbox' onClick={handleCheckboxClick} />
       <li
         style={{
           color: 'white', 

@@ -9,10 +9,6 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 function App() {
    // adds new todo to beginning of todos array
  const [todos, setTodos] = useState([]);
-  
- function addTodo(todo) {
-   setTodos([todo, ...todos]);
- }
 
  useEffect(() => {
   // fires when app component mounts to the DOM
@@ -22,17 +18,39 @@ function App() {
   }
 }, []);
 
-
  useEffect(() => {
   // fires when todos array gets updated
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
 }, [todos]);
+  
+ function addTodo(todo) {
+   setTodos([todo, ...todos]);
+ }
+
+ function toggleComplete(id) {
+  setTodos(
+    todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        };
+      }
+      return todo;
+    })
+  );
+}
+
+function removeTodo(id) {
+  setTodos(todos.filter(todo => todo.id !== id));
+}
 
   return (
     <div className="App">
       <header className="App-header">
       <p>React ToDo</p>
       <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} toggleComplete={toggleComplete}/>
       </header>
     </div>
   );
