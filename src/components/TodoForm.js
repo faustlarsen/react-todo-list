@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import uuid from 'uuid';
 
 function TodoForm() {
   const [todo, setTodo] = useState({
@@ -10,6 +11,14 @@ function TodoForm() {
 function handletaskInputChange(event) {  //updates task property on todo object
   setTodo({...todo, task: event.targer.value})
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  if (todo.task.trim()) {
+    addTodo({ ...todo, id: uuid.v4() })
+  }
+}
+
    return (
     <form>
       <input
